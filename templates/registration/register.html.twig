@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card shadow-lg p-5" style="max-width: 500px; width: 100%; border-radius: 20px;">
+            <h1 class="text-center mb-4">Créer un compte</h1>
+
+            <!-- Début du formulaire -->
+            <form name="registrationForm" method="post">
+
+                <!-- Nom et Prénom -->
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        {{ form_row(registrationForm.lastname, {
+                            'attr': {'class': 'form-control', 'placeholder': 'Nom'}
+                        }) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(registrationForm.firstname, {
+                            'attr': {'class': 'form-control', 'placeholder': 'Prénom'}
+                        }) }}
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    {{ form_row(registrationForm.email, {
+                        'attr': {'class': 'form-control', 'placeholder': 'Votre email'}
+                    }) }}
+                </div>
+
+                <!-- Adresse -->
+                <div class="mb-3 mt-3">
+                    {{ form_row(registrationForm.address, {
+                        'attr': {'class': 'form-control', 'placeholder': 'Adresse'}
+                    }) }}
+                </div>
+
+                <!-- Code Postal et Ville -->
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        {{ form_row(registrationForm.zipcode, {
+                            'attr': {'class': 'form-control', 'placeholder': 'Code Postal'}
+                        }) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(registrationForm.city, {
+                            'attr': {'class': 'form-control', 'placeholder': 'Ville'}
+                        }) }}
+                    </div>
+                </div>
+
+                <!-- Mot de Passe -->
+                <div class="mb-3 mt-3">
+                    {{ form_row(registrationForm.plainPassword, {
+                        'attr': {
+                            'class': 'form-control',
+                            'placeholder': 'Mot de passe',
+                            'autocomplete': 'new-password'
+                        }
+                    }) }}
+                </div>
+
+                <!-- Consentement RGPD -->
+                <div class="form-check mb-3">
+                    {{ form_widget(registrationForm.RGPDconsent, {
+                        'attr': {'class': 'form-check-input'}
+                    }) }}
+                    <label class="form-check-label" for="{{ registrationForm.RGPDconsent.vars.id }}">
+                        J'accepte les conditions générales
+                    </label>
+                    {{ form_errors(registrationForm.RGPDconsent, {
+                        'attr': {'class': 'form-error-message'}
+                    }) }}
+                </div>
+
+                <!-- Bouton de Soumission -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-lg">S'inscrire</button>
+                    <br>
+                    <a href="{{ path('app_login') }}" class="btn btn-secondary"> Me connecter</a>
+                </div>
+            </form>
+            <!-- Fin du formulaire -->
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>{% block title %}Accueil{% endblock %} - Site e-commerce Symfony 6</title>
+
+		<!-- Favicon -->
+		<link rel="icon" href="{{ asset('favicon.ico') }}">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Feuilles de styles -->
+		<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+        {% block stylesheets %}{% endblock %}
+		<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+
+		<!-- Fichiers JS -->
+		<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
+		{% block javascripts %}{% endblock %}
+		<script src="{{ asset('assets/js/scripts.js') }}" defer></script>
+	</head>
+	<body>
+	    {% include "_partials/_nav.html.twig" %}
+
+		{% block body %}{% endblock %}
+
+		{% include "_partials/_footer.html.twig" %}
+	</body>
+</html>
+
